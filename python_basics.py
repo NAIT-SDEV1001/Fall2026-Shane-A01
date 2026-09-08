@@ -58,7 +58,7 @@ print(f"Hello {first_name}! I see you are {age} years old")
 # Constants - like a variable but is not supposed to change values
 # Used to give a meaningfull name to a value
 #Consants use SCREAMING_SNAKECASE
-GST = .05
+GST = .04
 
 total = 100 * .05
 print(total)
