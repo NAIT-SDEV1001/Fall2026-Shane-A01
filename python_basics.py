@@ -66,15 +66,62 @@ print(total)
 total = 100 * GST
 print(total)
 
+# User Input
+# input returns a string
+# name = input("Enter your name: ")
+# age = input ("Enter your age: ")
 
+# print(f"Hello {name}! You are {age} years old")
 
+# prompt for 2 integers
+# add them together
+# display the sum
+# number1 + number2 = sum
+#int(), str(), float()
 
+# number1 = input("Enter number 1: ")
+# number2 = input("Enter number 2: ")
 
+# sum = int(number1) + int(number2)
 
+# print (f"{number1} + {number2} = {sum}")
+# # OR
+# number1 = int(input("Enter number 1: "))
+# number2 = int(input("Enter number 2: "))
+# sum = number1 + number2
+# print (f"{number1} + {number2} = {sum}")
 
+# Math Operators
+print(4 + 2) #6
+print(4 - 2) #2
+print(4 * 2) #8
+print(4 / 2) #2.0 / returns a float
+print(9 // 4) #2 floor division (rounds down to closest whole number)
+print (2 ** 3)#exponent
+print (9 % 4) # 1 - Modulus
 
+# Formatting numbers
+total = 100.1234567
+print(round(total,2))
+print(round(total,6))
 
+print(f"{total:.2f}")
+print(f"{total:.6f}")
 
+price = 100
+print(f"{price:.2f}")
 
+# MATH FUNCTIONS
+# import imports the math module which contains math functions and constants
+import math
+
+test_value = 5.245435
+
+print(math.ceil(test_value)) #ceiling (round up to next whole number)
+print(math.floor(test_value)) #floor (round down to whole number)
+print(math.pow(2,3)) #exponent
+print(math.sqrt(9)) #square root
+print(max(1,5,3,77,5,73)) # maximum
+print(min(1,5,3,77,5,73)) # minimum
 
 
