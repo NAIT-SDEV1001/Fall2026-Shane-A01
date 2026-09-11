@@ -7,67 +7,67 @@
 # Add a single-line comment explaining why Python treats these as
 # two different variables.
 
-student_name = "Ava"
-Student_Name = "Sam"
+# student_name = "Ava"
+# Student_Name = "Sam"
 
-print(student_name)
-print(Student_Name)
+# print(student_name)
+# print(Student_Name)
 
-# Question 2: Strings and quotation marks
-# Create one string using double quotes and another using single quotes.
-# Print both strings. Did it work either way or was there an error?
+# # Question 2: Strings and quotation marks
+# # Create one string using double quotes and another using single quotes.
+# # Print both strings. Did it work either way or was there an error?
 
-double_quoted_string = "Python is fun!"
-single_quoted_string = 'Single quotes work too!'
+# double_quoted_string = "Python is fun!"
+# single_quoted_string = 'Single quotes work too!'
 
-print(double_quoted_string)
-print(single_quoted_string)
+# print(double_quoted_string)
+# print(single_quoted_string)
 
 
-# Question 3: 
-# Use ONE print() statement and escape sequences to display this output:
-# Python Basics
-#     Strings are fun!
-# "Practice makes progress."
-print("Python Basics\n\tStrings are fun!\n\"Practice makes progress.\"")
+# # Question 3: 
+# # Use ONE print() statement and escape sequences to display this output:
+# # Python Basics
+# #     Strings are fun!
+# # "Practice makes progress."
+# print("Python Basics\n\tStrings are fun!\n\"Practice makes progress.\"")
 
-# Question 4: 
-# Store "10" and "5" in two variables as strings. Add them and print the
-# result. Then store 10 and 5 in two variables as numbers, add them, and
-# print the result. Add a comment explaining why the results are different.
-first_score_string = "10"
-second_score_string = "5"
+# # Question 4: 
+# # Store "10" and "5" in two variables as strings. Add them and print the
+# # result. Then store 10 and 5 in two variables as numbers, add them, and
+# # print the result. Add a comment explaining why the results are different.
+# first_score_string = "10"
+# second_score_string = "5"
 
-sum = first_score_string + second_score_string
-print (sum)
+# sum = first_score_string + second_score_string
+# print (sum)
 
-first_score_number = 10
-second_score_number = 5
+# first_score_number = 10
+# second_score_number = 5
 
-sum = first_score_number + second_score_number
-print (sum)
-#DO NOT do calculations in print
-print(first_score_number + second_score_number)
+# sum = first_score_number + second_score_number
+# print (sum)
+# #DO NOT do calculations in print
+# print(first_score_number + second_score_number)
 
-# Question 5: 
-# Create variables for a person's name (string) and age (integer).
-# Use the + operator to display a sentence such as "Ava is 20 years old."
-# If you had any errors describe what the issue was in a short comment
-person_name = "Ava"
-person_age = 20
+# # Question 5: 
+# # Create variables for a person's name (string) and age (integer).
+# # Use the + operator to display a sentence such as "Ava is 20 years old."
+# # If you had any errors describe what the issue was in a short comment
+# person_name = "Ava"
+# person_age = 20
 
-print(person_name + " is " + str(20) + " years old.")
+# print(person_name + " is " + str(20) + " years old.")
                         
 
-# Question 6: 
-# Create a constant named COURSE_NAME and assign it "Introduction to Python".
-# Create variables for a student's name and current grade.
-# Use an f-string to print a sentence containing the student name, grade,
-# and course name. Example: "Sam has 85% in Introduction to Python."
-COURSE_NAME = "Introduction to Python"
-student_name = "Sam"
-current_grade = 85
-print(f"{student_name} has {current_grade}% in {COURSE_NAME}.")
+# # Question 6: 
+# # Create a constant named COURSE_NAME and assign it "Introduction to Python".
+# # Create variables for a student's name and current grade.
+# # Use an f-string to print a sentence containing the student name, grade,
+# # and course name. Example: "Sam has 85% in Introduction to Python."
+# COURSE_NAME = "Introduction to Python"
+# student_name = "Sam"
+# current_grade = 85
+# print(f"{student_name} has {current_grade}% in {COURSE_NAME}.")
 
 # Question 7:
 # True or False? By naming our constant in question 6 in all caps it prevented us
@@ -89,7 +89,11 @@ print(f"{student_name} has {current_grade}% in {COURSE_NAME}.")
 #     Name: Sam
 #     Program: Digital Media and IT
 #     Favourite language: Python
+# name = input("Enter your name: ")
+# program_name = input("Enter program name: ")
+# favorite_language = input("Enter your favorite programming language: ")
 
+# print(f"Student Information\n\tName: {name}\n\tProgram: {program_name}\n\tFavorite Language: {favorite_language}")
 
 # Challenge Question!
 # Create an Interactive Student Course Summary
@@ -148,5 +152,22 @@ print(f"{student_name} has {current_grade}% in {COURSE_NAME}.")
 #
 # 9. Use both single and double quotation marks appropriately.
 #
-#
+# *** Python Results ***
+# Student: Sam O'Neil
+# Course: "Introduction to Python"
+# Scores as strings: 85 + 10 = 8510
+# Scores as numbers: 85 + 10 = 95
+# Sam O'Neil's final grade in "Introduction to Python" is 95%.
+COURSE_NAME = "Introduction To Python"
+
+name = input("Student Name: ")
+first_score = input("First score: ")
+bonus_score = input("Bonus score: ")
+
+string_sum = first_score + bonus_score
+sum = float(first_score) + float(bonus_score)
+
+print ("*** Python Results ***")
+print("Student: " + name + "'s\nCourse: " + COURSE_NAME + "\nScores as Strings: " + first_score + " + " + bonus_score + " = " + string_sum + "\nScores as Numbers: " + first_score + " + " + bonus_score + " = " + str(sum) + "\n" + name +" final grade in " + COURSE_NAME + " is " + str(sum) + "%") 
+
 
