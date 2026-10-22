@@ -25,8 +25,12 @@ def calculate_donations(**donations):
 print("Question 3 - Game settings")
 display_game_settings(difficulty="easy", sound=True, lives=3)
 display_game_settings()
+
+
+
 print("\nQuestion 4 - Fundraiser donations")
 total = calculate_donations(Alex=10, Sam=7.50, Riley=12.25)
+#"Alex":10, "Sam":7.50, "Riley":12.25
 print(f"Total raised: ${total:.2f}")
 # Check the empty case as well.
 total = calculate_donations()

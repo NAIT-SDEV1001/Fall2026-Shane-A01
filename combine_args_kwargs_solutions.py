@@ -32,6 +32,8 @@ print("Question 5 - Movie night")
 movie_night("Shrek", "Toy Story", snack="Popcorn", start="7 PM")
 print("\nEmpty movie night:")
 movie_night()
+
+
 print("\nQuestion 6 - Build a robot")
 build_robot("Wheels", "Claw", "Camera", name="Bolt", colour="Blue")
 print("\nEmpty robot:")

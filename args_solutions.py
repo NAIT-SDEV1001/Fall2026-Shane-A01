@@ -28,6 +28,8 @@ def calculate_points(*scores):
 print("Question 1 - Snack roll call")
 display_snacks("Popcorn", "Pretzels", "Cookies")
 display_snacks()
+
+
 print("\nQuestion 2 - Arcade points")
 print(calculate_points(10, 25, 15))
 print(calculate_points(100, 50))
