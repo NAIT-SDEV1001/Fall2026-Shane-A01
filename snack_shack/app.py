@@ -7,13 +7,13 @@
 from .display import display_welcome,display_output
 #from display import *      * means all functions
 from .pricing import calculate_total
-from .validation import get_valid_quantity
+from .validation import get_valid_integer,get_non_empty_string
 
 def main():
     UNIT_PRICE = 2.99
     display_welcome()
-    item_name = input("Snack name: ")
-    quantity = get_valid_quantity()
+    item_name = get_non_empty_string("Enter the snack name")
+    quantity = get_valid_integer("Enter the snack quantity")
     #total = calculate_total(quantity,UNIT_PRICE) #override the default
     #total = calculate_total(quantity)#using the default
     total = calculate_total(quantity = quantity, unit_price = UNIT_PRICE)
