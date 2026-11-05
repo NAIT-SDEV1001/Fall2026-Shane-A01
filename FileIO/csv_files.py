@@ -18,6 +18,7 @@ def read_artists(file_path):
 
     except FileNotFoundError:
         print(f"Error: The file {file_path} does not exist.")
+        
     return all_artists
 
 # function to return artists that have more than a certain number of monthly listeners
