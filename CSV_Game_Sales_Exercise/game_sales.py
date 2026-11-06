@@ -33,10 +33,35 @@ def get_popular_games(sales):
             })
     return popular_games
 
-file_path = Path(__file__).parent/'data'/'game_sales.csv'
-pprint (read_sales(file_path))
+def write_report(file_path, games):
+    # Explicit names allow a header-only report when games is empty.
+    fieldnames = ['Game', 'Category', 'Revenue']
+    with open(file_path, 'w', newline='', encoding='utf-8') as file:
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
+        writer.writeheader()
+        for game in games:
+            writer.writerow(game)
 
-print('Popular games')
-pprint(get_popular_games(read_sales(file_path)))
+def main():
+    file_path = Path(__file__).parent/'data'/'game_sales.csv'
+    output_path = Path(__file__).parent/'data'/'popular_games.csv'
+    sales = read_sales(file_path)
+    # None means missing file; [] means a successfully read empty file.
+    if sales is None:
+        return
+    games = get_popular_games(sales)
+    write_report(output_path, games)
+    print(f"Sales records read: {len(sales)}")
+    if games:
+        print("\nGames earning at least $100:")
+        for game in games:
+            print(f"{game['Game']}: ${game['Revenue']}")
+    else:
+        print("\nNo games earned at least $100.")
+    print(f"\nReport saved to {output_path.name}")
+
+
+if __name__ == '__main__':
+    main()
 
 
