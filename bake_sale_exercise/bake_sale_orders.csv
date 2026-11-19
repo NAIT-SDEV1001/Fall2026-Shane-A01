@@ -1,0 +1,4 @@
+order_id,customer_name,item,quantity,pickup_date,collected,order_type,gift_message
+B101,Sam Lee,Chocolate chip cookies,6,21/11/26,no,regular,
+B102,Riley Chen,Blueberry muffins,4,21/11/26,yes,regular,
+B103,Alex Morgan,Brownies,8,22/11/26,no,gift,Happy birthday!

@@ -1,8 +1,8 @@
-from animal import Animal,Dog
+from animal import Dog,Cat,Bird
 
 dog = Dog("Roger","Brown",4,"Poodle")
-cat = Animal("Fluffy","Black",4)
-bird = Animal("Buddy","Green",2)
+cat = Cat("Fluffy","Black",4,"striped",10)
+bird = Bird("Buddy","Green",2,20)
 
 #create a list of animals
 animals = [dog,cat,bird]
@@ -17,5 +17,8 @@ for animal in animals:
     #check to see if the animal is a dog(Dog) that has a chase_car()
     if isinstance(animal,Dog): #is the animal object an instance of the Dog class?
         animal.chase_car()
+    if isinstance(animal,Cat):
+        animal.knock_things_off_ledge()
+
 
     
