@@ -3,6 +3,8 @@ from pathlib import Path
 import csv
 DATE_FORMAT = "%d/%m/%y"
 FIELD_NAMES = ["order_id","customer_name","item","quantity","pickup_date","collected","order_type","gift_message"]
+CSV_PATH = Path(__file__).parent / "bake_sale_orders.csv"
+
 
 class BakeSaleOrder:
     def __init__(self, order_id: str, customer_name: str, item: str, quantity: int, pickup_date: datetime, collected: bool)->None:
@@ -78,8 +80,8 @@ class BakeSale:
                     self.add_order(order)
 
                 #for testing, add one more order object to the list that is not on the file. 
-                self.orders.append(GiftOrder("abc123","Sue","Candy",5,
-                                             datetime.strptime("1/1/20",DATE_FORMAT),True,"Happy Friday"))    
+                # # self.orders.append(GiftOrder("abc123","Sue","Candy",5,
+                #                              datetime.strptime("1/1/20",DATE_FORMAT),True,"Happy Friday"))    
                 # for order in self.orders:
                 #     print(order)
 
@@ -109,10 +111,127 @@ class BakeSale:
                 #convert each order object to a dictionary before writing to the file
                 writer.writerow(order.to_csv_row())
 
+    def prompt_for_order(self) -> None:
+        order_id = input("Order ID: ").strip()
+        customer_name = input("Customer name: ").strip()
+        item = input("Item: ").strip()
 
-csv_path = Path(__file__).parent / "bake_sale_orders.csv"
+        try:
+            quantity = int(input("Quantity: "))
+        except ValueError:
+            print("Quantity must be a positive whole number.")
+            return
 
-bake_sale = BakeSale()
-bake_sale.load_orders(csv_path)
-bake_sale.save_orders(csv_path)
+        try:
+            pickup_date = datetime.strptime(input("Pickup date (dd/mm/yy): ").strip(), DATE_FORMAT)
+        except ValueError:
+            print("Enter a valid date in dd/mm/yy format.")
+            return
+
+        try:
+            order_type = input("Order type (regular/gift): ").strip().lower()
+            if order_type == "regular":
+                order = BakeSaleOrder(order_id, customer_name, item, quantity, pickup_date,False)
+            elif order_type == "gift":
+                gift_message = input("Gift message: ").strip()
+                order = GiftOrder(order_id, customer_name, item, quantity, pickup_date, False, gift_message)
+            else:
+                raise ValueError("Order type must be regular or gift.")
+            self.add_order(order)
+        except ValueError as error:
+            print(error)
+            return
+
+        print(f"Added order {order.order_id}.")
+
+
+    def show_pickups(self) -> None:
+        date_text = input("Pickup date (dd/mm/yy): ").strip()
+        try:
+            pickup_date = datetime.strptime(date_text, DATE_FORMAT)
+        except ValueError:
+            print("Enter a valid date in dd/mm/yy format.")
+            return
+
+        total_quantity = 0
+        for order in self.orders:
+            if order.pickup_date == pickup_date.date() and not order.collected:
+                print(order)
+                total_quantity += order.quantity
+
+        if total_quantity:
+            print(f"Total quantity: {total_quantity}")
+        else:
+            print("There are no pickups remaining for that date.")
+
+    def mark_collected(self) -> None:
+        order_id = input("Order ID: ").strip()
+        order = self.find_order(order_id)
+        if order is None:
+            print(f"No order found with ID {order_id}.")
+        elif order.collected:
+            print(f"Order {order_id} has already been collected.")
+        else:
+            order.collected = True
+            print(f"Marked {order_id} as collected.")
+
+    def list_orders(self)->None:
+        if not self.orders:
+            print("No orders")
+        else:
+            for order in self.orders:
+                print(order)
+
+def main() -> None:
+    bake_sale = BakeSale()
+    try:
+        bake_sale.load_orders(CSV_PATH)
+    except FileNotFoundError:
+        print(f"Could not load the orders")
+        return
+
+    while True:
+        print(
+            "\n=== Bake Sale Pickup Tracker ===\n"
+            "1. List all orders\n"
+            "2. Show pickups for a date\n"
+            "3. Add an order\n"
+            "4. Mark an order as collected\n"
+            "5. Save and exit"
+        )
+        choice = input("Choice: ").strip()
+
+        if choice == "1":
+            bake_sale.list_orders()
+        elif choice == "2":
+            bake_sale.show_pickups()
+        elif choice == "3":
+            bake_sale.prompt_for_order()
+        elif choice == "4":
+            bake_sale.mark_collected()
+        elif choice == "5":            
+            bake_sale.save_orders(CSV_PATH)                     
+            print("Orders saved. Goodbye!")
+            break
+        else:
+            print("Choose a menu option from 1 to 5.")
+
+if __name__ == "__main__":
+    main()
+
+
+
+
+
+
+
+# bake_sale = BakeSale()
+# bake_sale.load_orders(csv_path)
+# bake_sale.save_orders(csv_path)
+
+#prompt for order
+#Show_Pickups
+#mark collected
+
+#mainline
 
